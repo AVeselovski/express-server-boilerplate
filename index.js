@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 // config file must be created first in project root
 const config = require('./config');
 
@@ -14,6 +15,7 @@ mongoose.connect(config.databaseURL);
 
 // App setup
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
